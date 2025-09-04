@@ -3,11 +3,17 @@
 const elementsThead = document.querySelectorAll('table');
 
 for (const table of elementsThead) {
-  const elementsTheadTr = table.querySelector('thead tr');
-  const stringsTheadTh = elementsTheadTr.querySelectorAll('th');
-  const cloneTheadTh = stringsTheadTh[1].cloneNode(true);
+  const elementsTheadTr = table.querySelectorAll('thead tr');
 
-  elementsTheadTr.insertBefore(cloneTheadTh, elementsTheadTr.lastElementChild);
+  for (const theadTr of elementsTheadTr) {
+    const stringsTheadTh = theadTr.querySelectorAll('th');
+
+    if (stringsTheadTh.length >= 2) {
+      const cloneTheadTh = stringsTheadTh[1].cloneNode(true);
+
+      theadTr.insertBefore(cloneTheadTh, theadTr.lastElementChild);
+    }
+  }
 
   const elementsTbodyTr = table.querySelectorAll('tbody tr');
 
@@ -21,9 +27,15 @@ for (const table of elementsThead) {
     }
   }
 
-  const elementsTfootTr = table.querySelector('tfoot tr');
-  const stringsTfootTh = elementsTfootTr.querySelectorAll('th');
-  const cloneTfootTh = stringsTfootTh[1].cloneNode(true);
+  const elementsTfootTr = table.querySelectorAll('tfoot tr');
 
-  elementsTfootTr.insertBefore(cloneTfootTh, elementsTfootTr.lastElementChild);
+  for (const tfootTr of elementsTfootTr) {
+    const stringsTfootTh = tfootTr.querySelectorAll('th');
+
+    if (stringsTfootTh.length >= 2) {
+      const cloneTfootTh = stringsTfootTh[1].cloneNode(true);
+
+      tfootTr.insertBefore(cloneTfootTh, tfootTr.lastElementChild);
+    }
+  }
 }
